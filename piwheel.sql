@@ -720,3 +720,18 @@ INSERT INTO `User` (`ID`, `UserID`, `Username`, `Password`, `Pass_Salt`, `IsActi
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+--
+-- Omnia create table to link between User table and Course table
+--
+
+
+CREATE TABLE User_Courses (
+user_id INT NOT NULL,  
+course_id INT NOT NULL,  
+PRIMARY KEY (user_id,course_id),  
+FOREIGN KEY (user_id) REFERENCES User(ID) ON UPDATE CASCADE,  
+FOREIGN KEY (course_id) REFERENCES Course(ID) ON UPDATE CASCADE);
+
+INSERT INTO `User_Courses` (`user_id`, `course_id`) VALUES
+(11, '14');
