@@ -1,0 +1,43 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function showHint() {
+                if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp=new XMLHttpRequest();
+                } else { // code for IE6, IE5
+                  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                
+                xmlhttp.onreadystatechange=function() {
+                  if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                    document.getElementById("Tagsarray").innerHTML = xmlhttp.responseText;
+                  }
+                }
+                xmlhttp.open("GET","getTags.php",true);
+                xmlhttp.send();
+              }
+        </script>
+        
+        <title>Get Tags</title>
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <link href="bootstrap-theme.min.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top" ><h1>Get Tags</h1></div>
+        
+        <div id="gettags">
+            <form method="post" action="getTags.php" >
+                <button type="button" class="btn btn-danger" onclick="showHint()">Get Tags</button>
+           </form>
+        </div>
+        <div id="Tagsarray" class="panel panel-default"></div>
+    </body>
+</html>
