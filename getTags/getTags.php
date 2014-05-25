@@ -24,17 +24,29 @@ else{
 //Close database connection
 mysqli_close($con);
 
-
+ 
 function createJsonArray($res) {
      $i  = 0;
+     $k = 0;
+     $arr2[$k] = "";
      while ($row = mysqli_fetch_array($res))
      {
-         //echo $row[0];
          $arr[$i] = $row[0];
+         $newarray = explode(",", $arr[$i]);
+         for($j=0 ; $j<count($newarray) ; $j++)
+         {
+             if (!in_array(strtolower($newarray[$j]),$arr2)){
+                 //echo "doesn't exist <br/> " . strtolower ($newarray[$j]) . "<br/>";
+                 $arr2[$k] = strtolower ($newarray[$j]);
+             $k ++;
+             }   
+         }
          $i ++;
      }
-     $encode = array($arr);
+     $encode = array($arr2);
      echo json_encode($encode);
 
 }
+
+
 ?>
