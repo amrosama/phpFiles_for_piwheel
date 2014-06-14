@@ -6,7 +6,7 @@
 if(isset ($_FILES['image'])){
     if ($_FILES["image"]["error"] > 0)
     {
-       echo "Apologies, an error has occurred.";
+       echo "Apologies, an error has occurred. ";
        echo "Error Code: " . $_FILES["image"]["error"];
     }
     else{
