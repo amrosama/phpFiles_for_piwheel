@@ -1,0 +1,63 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <link href="bootstrap-theme.min.css" rel="stylesheet">
+        <script type="text/javascript" src="jquery-2.1.0.min.js"></script>
+        <script type="text/javascript">
+             $(function() {
+                $("#sub").click(function() {
+                var name = $("#tag_name").val();
+                var dataString = 'name='+ name ;
+                if(name=='' )
+                {alert("not inserted");}
+                else
+                {
+                $.ajax({
+                type: "POST",
+                url: "addTags.php",
+                data: dataString,
+                success: function(){
+                alert("inserted successfully");
+                 $('#tag_name').val('');
+                }
+                });
+                }
+                return false;
+                });
+                });
+        </script>
+        <style>
+            body{
+                background-color: #eee;
+            }
+            h3{
+                color: white;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top" ><h3>Add Tags</h3></div>
+        <div class="col-sm-6 col-sm-offset-3" style="width:500px;margin: 0 auto;margin-top: 100px;">
+            <form id="myform"  method="post" action="addTags.php" >
+                
+                <!-- NAME -->
+		<div id="name" class="form-group">
+			<label for="name"> Tag Name</label>
+			<input type="text" class="form-control" id="tag_name" name="name" placeholder="Tag name" required=""/>
+			<!-- errors will go here -->
+		</div>
+		
+                <button type="submit" class="btn btn-info" id="sub" >Add Tag</button>
+                </form>
+        </div>        
+        <div id="res"></div>      
+    </body>
+</html>
