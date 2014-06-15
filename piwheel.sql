@@ -735,3 +735,45 @@ FOREIGN KEY (course_id) REFERENCES Course(ID) ON UPDATE CASCADE);
 
 INSERT INTO `User_Courses` (`user_id`, `course_id`) VALUES
 (11, '14');
+
+
+----------------------Added By Heba Kamel---------------------
+alter table Course drop column tags;
+
+----------
+
+create table tags (
+	tags_id int not null AUTO_INCREMENT,
+	tags_name varchar(100) not null,
+	approved char default 0,
+	primary key (tags_id) 
+)
+
+insert into tags (tags_name) values ('software');
+insert into tags (tags_name) values ('programming');
+insert into tags (tags_name) values ('media');
+insert into tags (tags_name) values ('Development');
+insert into tags (tags_name) values ('computer');
+insert into tags (tags_name) values ('networks');
+insert into tags (tags_name) values ('mechanics');
+
+---------
+
+create table courses_tags_link (
+	courses_tags_link_id int not null AUTO_INCREMENT primary key,
+	course_id int not null,
+	tag_id int not null,
+	foreign key (course_id) references Course(ID) ON UPDATE CASCADE ,
+	foreign key (tag_id) references tags(tags_id) ON UPDATE CASCADE 
+)
+
+insert into courses_tags_link (course_id,tag_id) values(14,1);
+insert into courses_tags_link (course_id,tag_id) values(14,2);
+insert into courses_tags_link (course_id,tag_id) values(15,2);
+insert into courses_tags_link (course_id,tag_id) values(15,3);
+insert into courses_tags_link (course_id,tag_id) values(16,1);
+insert into courses_tags_link (course_id,tag_id) values(16,5);
+insert into courses_tags_link (course_id,tag_id) values(17,7);
+
+-----------------------------------------------------------------------------
+
