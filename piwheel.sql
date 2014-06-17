@@ -148,7 +148,6 @@ CREATE TABLE IF NOT EXISTS `Course` (
   `Image` varchar(255) COLLATE utf8_bin NOT NULL,
   `Brief` text COLLATE utf8_bin NOT NULL,
   `UniveristyID` int(11) NOT NULL,
-  `Tags` varchar(255) COLLATE utf8_bin NOT NULL,
   `Rating` int(11) NOT NULL,
   `Level` int(11) NOT NULL,
   `Duration` varchar(100) COLLATE utf8_bin NOT NULL,
@@ -167,16 +166,16 @@ CREATE TABLE IF NOT EXISTS `Course` (
 -- Dumping data for table `Course`
 --
 
-INSERT INTO `Course` (`ID`, `CourseID`, `Name`, `Image`, `Brief`, `UniveristyID`, `Tags`, `Rating`, `Level`, `Duration`, `Price`, `StartDate`, `InstructorID`, `Language`, `Video`, `Done`, `publish`) VALUES
-(14, '527f5aaec1dec', 'CSEN 102 Introduction to Computer Science', '527f5aaec1dec.jpg', ' CSEN102 is an introduction to fundamentals of Computer Science. The purpose of this course is to gain a broad oversight of the discipline of formal computer science. This will allow the students to, not only use computers and software efficiently, but to understand the ideas underlying their creation and implementation. Students will be able to understand fundamental issues as algorithms, hardware design, computer organization and system software', 1, 'software,programming', 1, 3, '30', 1000, '2013-11-19 22:00:00', '5295dcd1064b1', '', '', 1, 0),
-(15, '52820ad086851', 'Digital Media ', '52820ad086851.jpg', 'A digital media course', 2, 'media,software', 0, 3, '50', 200, '2013-11-29 22:00:00', '5295dcd1064b1', 'en', '', 1, 0),
-(16, '528c78823a268', 'HTML Basics', '528c78823a268.jpg', 'This course explains the first basics of implementing an HTML Page', 2, 'Software,Programming', 0, 4, '30', 1500, '2013-11-29 22:00:00', '5295dcd1064b1', 'en', '', 0, 0),
-(17, '528c795162b2e', 'MySQL ', '528c795162b2e.jpg', 'Nothing ', 2, 'Development,Programming', 0, 1, '30', 100, '2013-11-29 22:00:00', '5295dcd1064b1', 'en', '', 0, 0),
-(18, '528c80732a8a0', 'PHP 5', '528c80732a8a0.png', 'Nothing', 1, 'Development,Programming', 0, 4, '40', 350, '2013-11-29 22:00:00', '5295dcd1064b1', 'en', '', 1, 0),
-(20, '52a5a3822696a', 'Computer Networks', '52a5a3822696a.jpg', 'A computer network or data network is a telecommunications network that allows computers to exchange data. In computer networks, networked computing devices pass data to each other along data connections. The connections (network links) between nodes are established using either cable media or wireless media. The best-known computer network is the Internet.\nNetwork computer devices that originate, route and terminate the data are called network nodes.[1] Nodes can include hosts such as servers and personal computers, as well as networking hardware. Two devices are said to be networked when a device is able to exchange information with another device.\nComputer networks support applications such as access to the World Wide Web, shared use of application and storage servers, printers, and fax machines, and use of email and instant messaging applications. Computer networks differ in the physical media used to transmit their signals, the communications protocols to organize network traffic, the network''s size, topology and organizational intent.', 27, 'computer,networks', 0, 3, '55.00', 750, '2013-12-09 11:03:30', '5295dcd1064b1', '', '', 0, 0),
-(35, '52ad7b8453048', 'Course Name', '52ad7b8453048.jpg', 'Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm', 5, 'mechanics', 0, 4, '50.00', 1500, '2013-12-15 09:51:00', '5295dcd1064b1', '', '', 0, 0),
-(46, '52b025f147241', 'Test TEst', '52b025f147241.jpg', 'TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst', 2, '', 0, 3, '30.00', 1200, '2013-12-17 10:22:41', '5295dcd1064b1', '', '', 0, 0),
-(47, '52d26028815ad', 'New Course', '52d26028815ad.png', 'Desc of the new course Desc of the new course Desc of the new course Desc of the new course Desc of the new course', 39, '', 0, 3, '99.00', 500, '2014-01-12 09:28:08', '5295dcd1064b1', '', '', 1, 0);
+INSERT INTO `Course` (`ID`, `CourseID`, `Name`, `Image`, `Brief`, `UniveristyID`,  `Rating`, `Level`, `Duration`, `Price`, `StartDate`, `InstructorID`, `Language`, `Video`, `Done`, `publish`) VALUES
+(14, '527f5aaec1dec', 'CSEN 102 Introduction to Computer Science', '527f5aaec1dec.jpg', ' CSEN102 is an introduction to fundamentals of Computer Science. The purpose of this course is to gain a broad oversight of the discipline of formal computer science. This will allow the students to, not only use computers and software efficiently, but to understand the ideas underlying their creation and implementation. Students will be able to understand fundamental issues as algorithms, hardware design, computer organization and system software', 1, 1, 3, '30', 1000, '2013-11-19 22:00:00', '5295dcd1064b1', '', '', 1, 0),
+(15, '52820ad086851', 'Digital Media ', '52820ad086851.jpg', 'A digital media course', 2, 0, 3, '50', 200, '2013-11-29 22:00:00', '5295dcd1064b1', 'en', '', 1, 0),
+(16, '528c78823a268', 'HTML Basics', '528c78823a268.jpg', 'This course explains the first basics of implementing an HTML Page', 2, 0, 4, '30', 1500, '2013-11-29 22:00:00', '5295dcd1064b1', 'en', '', 0, 0),
+(17, '528c795162b2e', 'MySQL ', '528c795162b2e.jpg', 'Nothing ', 2,  0, 1, '30', 100, '2013-11-29 22:00:00', '5295dcd1064b1', 'en', '', 0, 0),
+(18, '528c80732a8a0', 'PHP 5', '528c80732a8a0.png', 'Nothing', 1,  0, 4, '40', 350, '2013-11-29 22:00:00', '5295dcd1064b1', 'en', '', 1, 0),
+(20, '52a5a3822696a', 'Computer Networks', '52a5a3822696a.jpg', 'A computer network or data network is a telecommunications network that allows computers to exchange data. In computer networks, networked computing devices pass data to each other along data connections. The connections (network links) between nodes are established using either cable media or wireless media. The best-known computer network is the Internet.\nNetwork computer devices that originate, route and terminate the data are called network nodes.[1] Nodes can include hosts such as servers and personal computers, as well as networking hardware. Two devices are said to be networked when a device is able to exchange information with another device.\nComputer networks support applications such as access to the World Wide Web, shared use of application and storage servers, printers, and fax machines, and use of email and instant messaging applications. Computer networks differ in the physical media used to transmit their signals, the communications protocols to organize network traffic, the network''s size, topology and organizational intent.', 27,  0, 3, '55.00', 750, '2013-12-09 11:03:30', '5295dcd1064b1', '', '', 0, 0),
+(35, '52ad7b8453048', 'Course Name', '52ad7b8453048.jpg', 'Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm Course smsmsm', 5,  0, 4, '50.00', 1500, '2013-12-15 09:51:00', '5295dcd1064b1', '', '', 0, 0),
+(46, '52b025f147241', 'Test TEst', '52b025f147241.jpg', 'TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst TEst', 2,  0, 3, '30.00', 1200, '2013-12-17 10:22:41', '5295dcd1064b1', '', '', 0, 0),
+(47, '52d26028815ad', 'New Course', '52d26028815ad.png', 'Desc of the new course Desc of the new course Desc of the new course Desc of the new course Desc of the new course', 39,  0, 3, '99.00', 500, '2014-01-12 09:28:08', '5295dcd1064b1', '', '', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -726,7 +725,7 @@ INSERT INTO `User` (`ID`, `UserID`, `Username`, `Password`, `Pass_Salt`, `IsActi
 --
 
 
-CREATE TABLE User_Courses (
+CREATE TABLE IF NOT EXISTS  User_Courses (
 user_id INT NOT NULL,  
 course_id INT NOT NULL,  
 PRIMARY KEY (user_id,course_id),  
@@ -737,17 +736,14 @@ INSERT INTO `User_Courses` (`user_id`, `course_id`) VALUES
 (11, '14');
 
 
-----------------------Added By Heba Kamel---------------------
-alter table Course drop column tags;
+-- Added By Heba Kamel
 
-----------
-
-create table tags (
+CREATE TABLE IF NOT EXISTS tags (
 	tags_id int not null AUTO_INCREMENT,
 	tags_name varchar(100) not null,
 	approved char default 0,
 	primary key (tags_id) 
-)
+);
 
 insert into tags (tags_name) values ('software');
 insert into tags (tags_name) values ('programming');
@@ -757,15 +753,15 @@ insert into tags (tags_name) values ('computer');
 insert into tags (tags_name) values ('networks');
 insert into tags (tags_name) values ('mechanics');
 
----------
 
-create table courses_tags_link (
+
+CREATE TABLE IF NOT EXISTS  courses_tags_link (
 	courses_tags_link_id int not null AUTO_INCREMENT primary key,
 	course_id int not null,
 	tag_id int not null,
 	foreign key (course_id) references Course(ID) ON UPDATE CASCADE ,
 	foreign key (tag_id) references tags(tags_id) ON UPDATE CASCADE 
-)
+);
 
 insert into courses_tags_link (course_id,tag_id) values(14,1);
 insert into courses_tags_link (course_id,tag_id) values(14,2);
@@ -775,5 +771,5 @@ insert into courses_tags_link (course_id,tag_id) values(16,1);
 insert into courses_tags_link (course_id,tag_id) values(16,5);
 insert into courses_tags_link (course_id,tag_id) values(17,7);
 
------------------------------------------------------------------------------
+--
 
