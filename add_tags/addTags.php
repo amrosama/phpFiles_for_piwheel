@@ -2,7 +2,7 @@
 if(isset ($_POST['name'])){
     $name = $_POST['name'];
 }
-
+  
 $con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","P@ssw0rd90906","PiWheel123");
 //$con = mysqli_connect("localhost","root","","PiWheel123");
 // Check connection
