@@ -6,13 +6,11 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 else{
-    $commandText = "select Tags from Course";
+    $commandText = "select tags_name from tags";
     
     // Try exectuting this query
     try {
         $result= mysqli_query($con, $commandText);
-        $num_rows = mysqli_num_rows($result);
-        //echo $num_rows;
         createJsonArray($result);
         
     }
