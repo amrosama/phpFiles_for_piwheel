@@ -60,7 +60,7 @@ INSERT INTO `activationTokens` (`UserID`, `Token`, `CreationDate`, `status`) VAL
 -- Table structure for table `Chapter_Exam`
 --
 
-CREATE TABLE IF NOT EXISTS `Chapter_Exam` (
+/* CREATE TABLE IF NOT EXISTS `Chapter_Exam` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `ChapterID` varchar(255) NOT NULL,
   `CourseID` varchar(255) NOT NULL,
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `Chapter_Exam` (
   `Name` varchar(255) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`ID`),
   FOREIGN KEY (CourseID) REFERENCES Course(CourseID) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ; */
 
 -- --------------------------------------------------------
 
