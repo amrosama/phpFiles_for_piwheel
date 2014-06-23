@@ -1,0 +1,93 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <link href="bootstrap-theme.min.css" rel="stylesheet">
+        <script type="text/javascript" src="jquery-2.1.0.min.js"></script>
+        <script type="text/javascript">
+            $( document ).ready(function() {
+//                document.Form1.button1.click();
+                document.getElementById("getTags").click();
+            });
+            function ShowTags (){
+              if(window.XMLHttpRequest){
+                  ajax = new XMLHttpRequest();
+              }
+              ajax.onreadystatechange = function (){
+                  if(ajax.readyState == 4 && ajax.status == 200){
+//                      var id=ajax.responseText;
+                      document.getElementById("result").innerHTML = ajax.responseText;
+                  }
+              }
+              ajax.open("GET","approve_reject_tag.php?action=select");
+              ajax.send();
+            }
+            
+            function btnSelete_Click(id)
+            {
+                var strconfirm = confirm("Are you sure you want to Approve this tag?");
+                if (strconfirm == true)
+                {
+                 $.ajax({
+                      url:'approve_reject_tag.php?action=approve&id=' +id,
+                      complete: function (response) {
+                          $('#output').html(response.responseText);
+                      },
+                      error: function () {
+                          $('#output').html('Bummer: there was an error!');
+                      }
+                  }); 
+                  
+                  $.ajax({
+                      url:'approve_reject_tag.php?action=select',
+                      complete: function (response) {
+                          $('#output').html(response.responseText);
+                      },
+                      error: function () {
+                          $('#output').html('Bummer: there was an error!');
+                      }
+                  });
+                }
+            }
+        </script>
+        <style type="text/css">
+            body{
+                background-color: #eee;
+            }
+            h3{
+                color: white;
+            }
+            #result{
+                float: left;
+                margin-left: 200px;
+            }
+            #table-tags{
+                float: left;
+                width: 700px;
+                text-align: center;
+                background-color: #eee;
+            }
+            #table-tags th{
+                text-align: center;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top" ><h3>approve_reject_tag</h3></div>
+        <div class="col-sm-6 col-sm-offset-3" style="width:500px;margin: 0 auto;margin-top: 100px;">
+                <form id="myform"  method="post" action="approve_reject_tag.php?action=select" >
+                
+                <button type="button" id="getTags" style="width:0;visibility:hidden;" onclick="ShowTags()"></button>   
+                </form>
+            
+        </div>        
+        <div id="result"></div>      
+    </body>
+</html>
