@@ -41,7 +41,7 @@ function createJsonArray($res) {
          }
          $i ++;
      }
-     $encode = array($arr2);
+     $encode = $arr2;
      echo json_encode($encode);
 
 }
