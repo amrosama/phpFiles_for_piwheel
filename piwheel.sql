@@ -58,23 +58,27 @@ INSERT INTO `activationTokens` (`UserID`, `Token`, `CreationDate`, `status`) VAL
 
 --
 -- Table structure for table `Chapter_Exam`
---
 
-/* CREATE TABLE IF NOT EXISTS `Chapter_Exam` (
+CREATE TABLE IF NOT EXISTS `Chapter_Exam` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ChapterID` varchar(255) NOT NULL,
-  `CourseID` varchar(255) NOT NULL,
+  `ChapterID` int(11) NOT NULL,
+  `CourseID` int(11) NOT NULL,
   `Type` varchar(100) COLLATE utf8_bin NOT NULL,
   `Name` varchar(255) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`ID`),
-  FOREIGN KEY (CourseID) REFERENCES Course(CourseID) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ; */
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+--
+
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `Chapter_Lesson`
 --
+-- 
+
+
 
 CREATE TABLE IF NOT EXISTS `Chapter_Lesson` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
@@ -84,59 +88,59 @@ CREATE TABLE IF NOT EXISTS `Chapter_Lesson` (
   `Content` varchar(255) COLLATE utf8_bin NOT NULL,
   `StartDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `EndDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `FilePath`  varchar(255) COLLATE utf8_bin NOT NULL,
-  `LessonNo`  int(11) COLLATE utf8_bin ,
+  `FilePath` varchar(255) COLLATE utf8_bin NOT NULL,
+  `LessonNo`  int(11) COLLATE utf8_bin,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=152 ;
 
---
--- Dumping data for table `Chapter_Lesson`
---
 
-INSERT INTO `Chapter_Lesson` (`ID`, `ChapterID`, `Name`, `Type`, `Content`, `StartDate`, `EndDate` , `LessonNo` ) VALUES
-(105, '52c29b7d5144d', 'lesson 1', 'video', 'amamama.com', '2014-01-02 11:41:14', '0000-00-00 00:00:00',1),
-(106, '52c29b7d5144d', 'lesson 2', 'video', 'slslss.com', '2014-01-02 11:41:26', '0000-00-00 00:00:00',2),
-(107, '52c29b7d5144d', 'lesson 4', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c29b7d5144d_lesson 4/Amr_Bakr1.pdf', '2014-01-02 11:41:42', '0000-00-00 00:00:00', 3),
-(109, '52c5575c76e8c', 'lesson 1', 'video', 'sss.com', '2014-01-02 12:11:08', '0000-00-00 00:00:00', 8),
-(110, '52c5575c76e8c', 'lesson 2', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c5575c76e8c_lesson 2/Amr_Bakr.pdf', '2014-01-02 12:23:15', '0000-00-00 00:00:00', 4),
-(111, '52c5575c76e8c', 'sssss', 'video', 'sssss', '2014-01-02 12:29:49', '0000-00-00 00:00:00', 5),
-(112, '52c561766b766', 'sssss', 'video', 'sssss', '2014-01-02 12:54:14', '0000-00-00 00:00:00', 6),
-(113, '52c561766b766', 'lesson 1', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c561766b766_lesson 1/Amr_Bakr.pdf', '2014-01-02 12:54:40', '0000-00-00 00:00:00', 7),
-(114, '52c563c5e8828', 'lesson 1', 'video', 'sssss', '2014-01-02 13:04:06', '0000-00-00 00:00:00', 9),
-(115, '52c563c5e8828', 'lesson new', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c563c5e8828_lesson new/Amr_Bakr.pdf', '2014-01-02 13:20:46', '0000-00-00 00:00:00', 10),
-(116, '52c567d847780', 'less', 'video', 'ssssss', '2014-01-02 13:21:28', '0000-00-00 00:00:00', 11),
-(117, '52c567d847780', 'lesson 1', 'video', 'www.video.com', '2014-01-02 13:45:38', '0000-00-00 00:00:00', 12),
-(118, '52c56db1468e4', 'lesson 1', 'video', 'ssssssss', '2014-01-02 13:46:25', '0000-00-00 00:00:00', 13),
-(119, '52c56ef7c747c', 'lesson1', 'video', 'wwwwwww', '2014-01-02 13:51:52', '0000-00-00 00:00:00', 14),
-(120, '52c56ef7c747c', 'lesson  2', 'document', '/var/www/html/PiWheel/application/uploads/material/52c56ef7c747c_lesson  2/Amr_Bakr.pdf', '2014-01-02 13:52:28', '0000-00-00 00:00:00', 15),
-(121, '52c57197f41bd', 'new', 'video', 'sssss', '2014-01-02 14:03:04', '0000-00-00 00:00:00', 16),
-(122, '52c571b61f8cd', 'new', 'video', 'sssss', '2014-01-02 14:03:34', '0000-00-00 00:00:00', 17),
-(123, '52c571b61f8cd', 'new lesson', 'video', 'ssss', '2014-01-02 14:04:21', '0000-00-00 00:00:00', 18),
-(124, '52c571b61f8cd', 'lesson 1', 'video', 'sssss', '2014-01-02 14:04:40', '0000-00-00 00:00:00', 19),
-(125, '52c57302e3303', 'lesson 1', 'video', 'sssss', '2014-01-02 14:09:07', '0000-00-00 00:00:00', 20),
-(126, '52c57302e3303', 'lesson 2', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c57302e3303_lesson 2/Amr_Bakr.pdf', '2014-01-02 14:09:29', '0000-00-00 00:00:00', 21),
-(128, '52c5732de6b99', 'lesson 1', 'video', 'sslslsls', '2014-01-02 14:37:54', '0000-00-00 00:00:00', 22),
-(129, '52c5732de6b99', 'lesson 2 ', 'exam', '52c57d6adfbf0', '2014-01-02 14:53:30', '0000-00-00 00:00:00', 23),
-(132, '52c922247d7fd', 'Document', 'document', '/var/www/html/PiWheel/application/uploads/material/52c922247d7fd_Document/Amr_Bakr.pdf', '2014-01-05 09:13:08', '0000-00-00 00:00:00', 24),
-(133, '52c922247d7fd', 'Slides', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c922247d7fd_Slides/Amr_Bakr.pdf', '2014-01-05 09:13:17', '0000-00-00 00:00:00', 25),
-(134, '52c922247d7fd', 'Video', 'video', 'www.video.com', '2014-01-05 09:13:42', '0000-00-00 00:00:00', 26),
-(135, '52c922247d7fd', 'Exam', 'exam', '52c9228090c8c', '2014-01-05 09:14:40', '0000-00-00 00:00:00', 27),
-(136, '52c922a45f7d1', 'Document', 'document', '/var/www/html/PiWheel/application/uploads/material/52c92-2a45f7d1_Document/Amr_Bakr.pdf', '2014-01-05 09:15:16', '0000-00-00 00:00:00', 28),
-(137, '52c922a45f7d1', 'Slides', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c922a45f7d1_Slides/Amr_Bakr.pdf', '2014-01-05 09:15:25', '0000-00-00 00:00:00', 29),
-(138, '52c922a45f7d1', 'Video', 'video', 'www.video.com', '2014-01-05 09:15:34', '0000-00-00 00:00:00', 30),
-(139, '52c922a45f7d1', 'Exam', 'exam', '52c922c930681', '2014-01-05 09:15:53', '0000-00-00 00:00:00', 31),
-(140, '52c9398eee7f2', 'Document', 'document', '/var/www/html/PiWheel/application/uploads/material/52c9398eee7f2_Document/Amr_Bakr.pdf', '2014-01-05 10:53:03', '0000-00-00 00:00:00', 32),
-(141, '52c9398eee7f2', 'Slides', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c9398eee7f2_Slides/Amr_Bakr.pdf', '2014-01-05 10:53:12', '0000-00-00 00:00:00', 33),
-(142, '52c9398eee7f2', 'Video', 'video', 'www.video.com', '2014-01-05 10:53:21', '0000-00-00 00:00:00', 34),
-(143, '52c9398eee7f2', 'Exam', 'exam', '52c939b04cf51', '2014-01-05 10:53:36', '0000-00-00 00:00:00', 35),
-(144, '52d2573b59798', 'pdf', 'document', '/var/www/html/PiWheel/application/uploads/material/52d2573b59798_pdf/Amr_Bakr.pdf', '2014-01-12 08:50:03', '0000-00-00 00:00:00',36),
-(145, '52d26045a452f', 'pdf', 'document', '/var/www/html/PiWheel/application/uploads/material/52d26045a452f_pdf/Amr_Bakr.pdf', '2014-01-12 09:28:37', '0000-00-00 00:00:00', 37),
-(146, '52d26045a452f', 'slides', 'slides', '/var/www/html/PiWheel/application/uploads/material/52d26045a452f_slides/Amr_Bakr.pdf', '2014-01-12 09:29:00', '0000-00-00 00:00:00', 38),
-(147, '52d26045a452f', 'exam', 'slides', '/var/www/html/PiWheel/application/uploads/material/52d26045a452f_exam/UX_Design_as_a_concept.ppt', '2014-01-12 09:32:00', '0000-00-00 00:00:00', 39),
-(148, '52d2622a8bb71', 'slides', 'slides', '/var/www/html/PiWheel/application/uploads/material/52d2622a8bb71_slides/Amr_Bakr.pdf', '2014-01-12 09:36:42', '0000-00-00 00:00:00', 40),
-(149, '52d2622a8bb71', 'ppt', 'slides', '/var/www/html/PiWheel/application/uploads/material/52d2622a8bb71_ppt/UX_Design_as_a_concept.ppt', '2014-01-12 09:37:01', '0000-00-00 00:00:00',41),
-(150, '52d2624d060b3', 'lesson 1', 'video', 'www.video.com', '2014-01-12 09:37:17', '0000-00-00 00:00:00', 42),
-(151, '52d2624d060b3', 'pdf', 'document', '/var/www/html/PiWheel/application/uploads/material/52d2624d060b3_pdf/Amr_Bakr.pdf', '2014-01-12 09:37:37', '0000-00-00 00:00:00', 43);
+-- -- Dumping data for table `Chapter_Lesson`
+-- --
+-- -- 
+ INSERT INTO `Chapter_Lesson` (`ID`, `ChapterID`, `Name`, `Type`, `Content`, `StartDate`, `EndDate` , `LessonNo`) VALUES
+ (105, '52c29b7d5144d', 'lesson 1', 'video', 'amamama.com', '2014-01-02 11:41:14', '0000-00-00 00:00:00',1),
+ (106, '52c29b7d5144d', 'lesson 2', 'video', 'slslss.com', '2014-01-02 11:41:26', '0000-00-00 00:00:00',2),
+ (107, '52c29b7d5144d', 'lesson 4', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c29b7d5144d_lesson 4/Amr_Bakr1.pdf', '2014-01-02 11:41:42', '0000-00-00 00:00:00', 3),
+ (109, '52c5575c76e8c', 'lesson 1', 'video', 'sss.com', '2014-01-02 12:11:08', '0000-00-00 00:00:00', 8),
+ (110, '52c5575c76e8c', 'lesson 2', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c5575c76e8c_lesson 2/Amr_Bakr.pdf', '2014-01-02 12:23:15', '0000-00-00 00:00:00', 4),
+ (111, '52c5575c76e8c', 'sssss', 'video', 'sssss', '2014-01-02 12:29:49', '0000-00-00 00:00:00', 5),
+ (112, '52c561766b766', 'sssss', 'video', 'sssss', '2014-01-02 12:54:14', '0000-00-00 00:00:00', 6),
+ (113, '52c561766b766', 'lesson 1', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c561766b766_lesson 1/Amr_Bakr.pdf', '2014-01-02 12:54:40', '0000-00-00 00:00:00', 7),
+ (114, '52c563c5e8828', 'lesson 1', 'video', 'sssss', '2014-01-02 13:04:06', '0000-00-00 00:00:00', 9),
+ (115, '52c563c5e8828', 'lesson new', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c563c5e8828_lesson new/Amr_Bakr.pdf', '2014-01-02 13:20:46', '0000-00-00 00:00:00', 10),
+ (116, '52c567d847780', 'less', 'video', 'ssssss', '2014-01-02 13:21:28', '0000-00-00 00:00:00', 11),
+ (117, '52c567d847780', 'lesson 1', 'video', 'www.video.com', '2014-01-02 13:45:38', '0000-00-00 00:00:00', 12),
+ (118, '52c56db1468e4', 'lesson 1', 'video', 'ssssssss', '2014-01-02 13:46:25', '0000-00-00 00:00:00', 13),
+ (119, '52c56ef7c747c', 'lesson1', 'video', 'wwwwwww', '2014-01-02 13:51:52', '0000-00-00 00:00:00', 14),
+ (120, '52c56ef7c747c', 'lesson  2', 'document', '/var/www/html/PiWheel/application/uploads/material/52c56ef7c747c_lesson  2/Amr_Bakr.pdf', '2014-01-02 13:52:28', '0000-00-00 00:00:00', 15),
+ (121, '52c57197f41bd', 'new', 'video', 'sssss', '2014-01-02 14:03:04', '0000-00-00 00:00:00', 16),
+ (122, '52c571b61f8cd', 'new', 'video', 'sssss', '2014-01-02 14:03:34', '0000-00-00 00:00:00', 17),
+ (123, '52c571b61f8cd', 'new lesson', 'video', 'ssss', '2014-01-02 14:04:21', '0000-00-00 00:00:00', 18),
+ (124, '52c571b61f8cd', 'lesson 1', 'video', 'sssss', '2014-01-02 14:04:40', '0000-00-00 00:00:00', 19),
+ (125, '52c57302e3303', 'lesson 1', 'video', 'sssss', '2014-01-02 14:09:07', '0000-00-00 00:00:00', 20),
+ (126, '52c57302e3303', 'lesson 2', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c57302e3303_lesson 2/Amr_Bakr.pdf', '2014-01-02 14:09:29', '0000-00-00 00:00:00', 21),
+ (128, '52c5732de6b99', 'lesson 1', 'video', 'sslslsls', '2014-01-02 14:37:54', '0000-00-00 00:00:00', 22),
+ (129, '52c5732de6b99', 'lesson 2 ', 'exam', '52c57d6adfbf0', '2014-01-02 14:53:30', '0000-00-00 00:00:00', 23),
+ (132, '52c922247d7fd', 'Document', 'document', '/var/www/html/PiWheel/application/uploads/material/52c922247d7fd_Document/Amr_Bakr.pdf', '2014-01-05 09:13:08', '0000-00-00 00:00:00', 24),
+ (133, '52c922247d7fd', 'Slides', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c922247d7fd_Slides/Amr_Bakr.pdf', '2014-01-05 09:13:17', '0000-00-00 00:00:00', 25),
+ (134, '52c922247d7fd', 'Video', 'video', 'www.video.com', '2014-01-05 09:13:42', '0000-00-00 00:00:00', 26),
+ (135, '52c922247d7fd', 'Exam', 'exam', '52c9228090c8c', '2014-01-05 09:14:40', '0000-00-00 00:00:00', 27),
+ (136, '52c922a45f7d1', 'Document', 'document', '/var/www/html/PiWheel/application/uploads/material/52c92-2a45f7d1_Document/Amr_Bakr.pdf', '2014-01-05 09:15:16', '0000-00-00 00:00:00', 28),
+ (137, '52c922a45f7d1', 'Slides', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c922a45f7d1_Slides/Amr_Bakr.pdf', '2014-01-05 09:15:25', '0000-00-00 00:00:00', 29),
+ (138, '52c922a45f7d1', 'Video', 'video', 'www.video.com', '2014-01-05 09:15:34', '0000-00-00 00:00:00', 30),
+ (139, '52c922a45f7d1', 'Exam', 'exam', '52c922c930681', '2014-01-05 09:15:53', '0000-00-00 00:00:00', 31),
+ (140, '52c9398eee7f2', 'Document', 'document', '/var/www/html/PiWheel/application/uploads/material/52c9398eee7f2_Document/Amr_Bakr.pdf', '2014-01-05 10:53:03', '0000-00-00 00:00:00', 32),
+ (141, '52c9398eee7f2', 'Slides', 'slides', '/var/www/html/PiWheel/application/uploads/material/52c9398eee7f2_Slides/Amr_Bakr.pdf', '2014-01-05 10:53:12', '0000-00-00 00:00:00', 33),
+ (142, '52c9398eee7f2', 'Video', 'video', 'www.video.com', '2014-01-05 10:53:21', '0000-00-00 00:00:00', 34),
+ (143, '52c9398eee7f2', 'Exam', 'exam', '52c939b04cf51', '2014-01-05 10:53:36', '0000-00-00 00:00:00', 35),
+ (144, '52d2573b59798', 'pdf', 'document', '/var/www/html/PiWheel/application/uploads/material/52d2573b59798_pdf/Amr_Bakr.pdf', '2014-01-12 08:50:03', '0000-00-00 00:00:00',36),
+ (145, '52d26045a452f', 'pdf', 'document', '/var/www/html/PiWheel/application/uploads/material/52d26045a452f_pdf/Amr_Bakr.pdf', '2014-01-12 09:28:37', '0000-00-00 00:00:00', 37),
+ (146, '52d26045a452f', 'slides', 'slides', '/var/www/html/PiWheel/application/uploads/material/52d26045a452f_slides/Amr_Bakr.pdf', '2014-01-12 09:29:00', '0000-00-00 00:00:00', 38),
+ (147, '52d26045a452f', 'exam', 'slides', '/var/www/html/PiWheel/application/uploads/material/52d26045a452f_exam/UX_Design_as_a_concept.ppt', '2014-01-12 09:32:00', '0000-00-00 00:00:00', 39),
+ (148, '52d2622a8bb71', 'slides', 'slides', '/var/www/html/PiWheel/application/uploads/material/52d2622a8bb71_slides/Amr_Bakr.pdf', '2014-01-12 09:36:42', '0000-00-00 00:00:00', 40),
+ (149, '52d2622a8bb71', 'ppt', 'slides', '/var/www/html/PiWheel/application/uploads/material/52d2622a8bb71_ppt/UX_Design_as_a_concept.ppt', '2014-01-12 09:37:01', '0000-00-00 00:00:00',41),
+ (150, '52d2624d060b3', 'lesson 1', 'video', 'www.video.com', '2014-01-12 09:37:17', '0000-00-00 00:00:00', 42),
+ (151, '52d2624d060b3', 'pdf', 'document', '/var/www/html/PiWheel/application/uploads/material/52d2624d060b3_pdf/Amr_Bakr.pdf', '2014-01-12 09:37:37', '0000-00-00 00:00:00', 43);
 
 -- --------------------------------------------------------
 
