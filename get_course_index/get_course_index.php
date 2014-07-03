@@ -73,7 +73,7 @@ function getChapter($arrId, $con) {
 //         echo "1";
          while($row = mysqli_fetch_array($result)){
              //echo $row[0] . "<br/>";
-             $arr2[$i] = $row[0] . ", " . $row[1] . ", " .$row[2] . ", " .$row[3];
+             $arr2[$i] = array($row[0] ,$row[1] ,$row[2] ,$row[3]);
              $i ++;
          }
          
