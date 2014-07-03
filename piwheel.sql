@@ -768,19 +768,40 @@ insert into tags (tags_name) values ('mechanics');
 
 CREATE TABLE IF NOT EXISTS  courses_tags_link (
 	courses_tags_link_id int not null AUTO_INCREMENT primary key,
-	course_id int not null,
+	course_id varchar(255)  COLLATE utf8_bin not null,
 	tag_id int not null,
-	foreign key (course_id) references Course(ID) ON UPDATE CASCADE ,
+	foreign key (course_id) references Course(CourseID) ON UPDATE CASCADE ,
 	foreign key (tag_id) references tags(tags_id) ON UPDATE CASCADE 
 );
 
-insert into courses_tags_link (course_id,tag_id) values(14,1);
-insert into courses_tags_link (course_id,tag_id) values(14,2);
-insert into courses_tags_link (course_id,tag_id) values(15,2);
-insert into courses_tags_link (course_id,tag_id) values(15,3);
-insert into courses_tags_link (course_id,tag_id) values(16,1);
-insert into courses_tags_link (course_id,tag_id) values(16,5);
-insert into courses_tags_link (course_id,tag_id) values(17,7);
+insert into courses_tags_link (course_id,tag_id) values("527f5aaec1dec",1);
+insert into courses_tags_link (course_id,tag_id) values("527f5aaec1dec",2);
+insert into courses_tags_link (course_id,tag_id) values("52820ad086851",2);
+insert into courses_tags_link (course_id,tag_id) values("52820ad086851",3);
+insert into courses_tags_link (course_id,tag_id) values("528c78823a268",1);
+insert into courses_tags_link (course_id,tag_id) values("528c78823a268",5);
+insert into courses_tags_link (course_id,tag_id) values("528c795162b2e",7);
 
---
+-- Added By Heba Kamel
 
+CREATE TABLE IF NOT EXISTS  rating (
+	courseID varchar(255)  COLLATE utf8_bin not null,
+	userID varchar(255)  COLLATE utf8_bin not null,
+        rateDesc varchar(255)  COLLATE utf8_bin not null,
+        Date varchar(255)  COLLATE utf8_bin not null,
+        point1 varchar(255)  COLLATE utf8_bin not null,
+        point2 varchar(255)  COLLATE utf8_bin not null,
+        point3 varchar(255)  COLLATE utf8_bin not null,
+        point4 varchar(255)  COLLATE utf8_bin not null,
+        point5 varchar(255)  COLLATE utf8_bin not null,
+	foreign key (courseID) references Course(CourseID) ON UPDATE CASCADE 
+);
+
+
+CREATE TABLE IF NOT EXISTS  certification (
+	ID int not null AUTO_INCREMENT primary key,
+	userID varchar(255)  COLLATE utf8_bin not null,
+        certName varchar(255)  COLLATE utf8_bin not null,
+        acreditedby varchar(255)  COLLATE utf8_bin not null,
+        verificationLink  varchar(255)  COLLATE utf8_bin 
+);
