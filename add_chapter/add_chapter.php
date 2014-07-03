@@ -1,7 +1,7 @@
 <?php
 function connect() {
-    //$con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","P@ssw0rd90906","PiWheel123");
-    $con = mysqli_connect("localhost", "root", "", "piwheel");
+    $con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","P@ssw0rd90906","PiWheel123");
+    //$con = mysqli_connect("localhost", "root", "", "piwheel");
     return $con;
 }
 //addChapter();
