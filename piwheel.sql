@@ -90,6 +90,7 @@ CREATE TABLE IF NOT EXISTS `Chapter_Lesson` (
   `EndDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `FilePath` varchar(255) COLLATE utf8_bin NOT NULL,
   `LessonNo`  int(11) COLLATE utf8_bin,
+  `Viewed`  boolean COLLATE utf8_bin,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=152 ;
 
