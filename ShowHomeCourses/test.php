@@ -11,7 +11,7 @@ if($_GET['tagsId'] != "")
         }   
     }
     $newarray = implode(", ", $tagsArr);  
-    $tagCommand = " and Tags in ($newarray)";
+    $tagCommand = "  in ($newarray)";
 }else{
     $tagCommand = "";
 }
@@ -24,14 +24,24 @@ if($_GET['tagsId'] != "")
     $periodTo = $_GET['periodTo'];
     
 
-$con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","P@ssw0rd90906","PiWheel123");
+//$con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","P@ssw0rd90906","PiWheel123");
+$con = mysqli_connect("localhost", "root", "", "piwheel");
 // Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 else{
+    $command = "select * from courses_tags_link where tag_id " . $tagCommand;
+    $res= mysqli_query($con, $command);
+    $i  = 0;
+    while ($row = mysqli_fetch_array($res))
+     {
+         $arrTag[$i] =  '"' . $row[1] . '"';
+         $i ++;
+     }
+    $newarr = implode(", ", $arrTag);
     $commandText = "select * from Course where Level between " . $levelFromId . " and " . $levelToId .
-            " and Price between " . $priceFrom . " and " . $priceTo . " and Duration between " . $periodFrom . " and " . $periodTo . $tagCommand;
+            " and Price between " . $priceFrom . " and " . $priceTo . " and Duration between " . $periodFrom . " and " . $periodTo  . " and CourseID in (" . $newarr . ")";//. $tagCommand;
     echo $commandText . "<br/>";
     // Try exectuting this query
     try {
