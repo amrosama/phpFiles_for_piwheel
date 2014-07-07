@@ -735,17 +735,29 @@ INSERT INTO `User` (`ID`, `UserID`, `Username`, `Password`, `Pass_Salt`, `IsActi
 -- Omnia create table to link between User table and Course table
 --
 
-
+--
+-- edit by Heba Kamel
+--
 CREATE TABLE IF NOT EXISTS  User_Courses (
 user_id INT NOT NULL,  
 course_id INT NOT NULL,  
+purchase boolean default 0,
+complete boolean default 0,
 PRIMARY KEY (user_id,course_id),  
 FOREIGN KEY (user_id) REFERENCES User(ID) ON UPDATE CASCADE,  
 FOREIGN KEY (course_id) REFERENCES Course(ID) ON UPDATE CASCADE);
 
-INSERT INTO `User_Courses` (`user_id`, `course_id`) VALUES
-(11, '14');
+INSERT INTO `User_Courses` (`user_id`, `course_id`, `purchase`, `complete`) VALUES
+(11, '14', 1, 0);
 
+INSERT INTO `User_Courses` (`user_id`, `course_id`, `purchase`, `complete`) VALUES
+(11, '15', 1, 1);
+
+INSERT INTO `User_Courses` (`user_id`, `course_id`, `purchase`, `complete`) VALUES
+(12, '14', 0, 1);
+
+INSERT INTO `User_Courses` (`user_id`, `course_id`, `purchase`, `complete`) VALUES
+(13, '16', 0, 0);
 
 -- Added By Heba Kamel
 
@@ -789,11 +801,11 @@ CREATE TABLE IF NOT EXISTS  rating (
 	userID varchar(255)  COLLATE utf8_bin not null,
         rateDesc varchar(255)  COLLATE utf8_bin not null,
         Date varchar(255)  COLLATE utf8_bin not null,
-        point1 varchar(255)  COLLATE utf8_bin not null,
-        point2 varchar(255)  COLLATE utf8_bin not null,
-        point3 varchar(255)  COLLATE utf8_bin not null,
-        point4 varchar(255)  COLLATE utf8_bin not null,
-        point5 varchar(255)  COLLATE utf8_bin not null,
+        point1 tinyint not null,
+        point2 tinyint not null,
+        point3 tinyint not null,
+        point4 tinyint not null,
+        point5 tinyint not null,
 	foreign key (courseID) references Course(CourseID) ON UPDATE CASCADE 
 );
 
