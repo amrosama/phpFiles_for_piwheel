@@ -1,0 +1,55 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+              function showCourse()
+                {
+                var xmlhttp;
+                if (window.XMLHttpRequest) {
+                  xmlhttp=new XMLHttpRequest();
+                }
+                else {
+                  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange=function() {
+                  if (xmlhttp.readyState==4 && xmlhttp.status==200){
+                    document.getElementById("courses").innerHTML = xmlhttp.responseText;
+                  }
+                }
+                xmlhttp.open("GET","studentData.php",true);
+                xmlhttp.send();
+                }
+        </script>
+        <style>
+            h3{
+                color: #ddd;
+            }
+            #getcourses{
+                margin:0 auto;
+                margin-top: 100px;
+                width: 700px;
+            }
+        </style>
+        <title>Student Data</title>
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <link href="bootstrap-theme.min.css" rel="stylesheet">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top" ><h3>Student Data</h3></div>
+        
+        <div id="getcourses">
+            <form method="post" action="studentData.php" >
+                <label>Student Name</label>
+                <input type="text" class="form-control" id="student_name" name="Sname" placeholder="Student name" required=""/>
+                <br/>
+                <button type="submit" class="btn btn-danger" onclick="showCourse();">Show courses</button>
+           </form>
+        </div>
+        <div id="courses"></div>
+    </body>
+</html>
