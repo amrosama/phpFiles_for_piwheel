@@ -739,25 +739,23 @@ INSERT INTO `User` (`ID`, `UserID`, `Username`, `Password`, `Pass_Salt`, `IsActi
 -- edit by Heba Kamel
 --
 CREATE TABLE IF NOT EXISTS  User_Courses (
-user_id INT NOT NULL,  
-course_id INT NOT NULL,  
+user_id varchar(255) COLLATE utf8_bin NOT NULL,  
+course_id varchar(255) COLLATE utf8_bin NOT NULL,  
 purchase boolean default 0,
 complete boolean default 0,
-PRIMARY KEY (user_id,course_id),  
-FOREIGN KEY (user_id) REFERENCES User(ID) ON UPDATE CASCADE,  
-FOREIGN KEY (course_id) REFERENCES Course(ID) ON UPDATE CASCADE);
+PRIMARY KEY (user_id,course_id));
 
 INSERT INTO `User_Courses` (`user_id`, `course_id`, `purchase`, `complete`) VALUES
-(11, '14', 1, 0);
+('5293206a36ebc', '527f5aaec1dec', 1, 0);
 
 INSERT INTO `User_Courses` (`user_id`, `course_id`, `purchase`, `complete`) VALUES
-(11, '15', 1, 1);
+('5293206a36ebc', '52820ad086851', 1, 1);
 
 INSERT INTO `User_Courses` (`user_id`, `course_id`, `purchase`, `complete`) VALUES
-(12, '14', 0, 1);
+('52932fbb2e0da', '527f5aaec1dec', 0, 1);
 
 INSERT INTO `User_Courses` (`user_id`, `course_id`, `purchase`, `complete`) VALUES
-(13, '16', 0, 0);
+('529483054518b', '528c78823a268', 0, 0);
 
 -- Added By Heba Kamel
 
