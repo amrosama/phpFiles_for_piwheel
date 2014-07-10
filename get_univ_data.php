@@ -1,7 +1,8 @@
 <?php
 
-$lessonID = $_POST['lesson_ID'];
-//$lessonID=105;
+$courseID = $_POST['Course_ID'];
+//test data
+//$courseID='52820ad086851';
 
 $con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","P@ssw0rd90906","PiWheel123");
 
@@ -10,24 +11,27 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 else{
-    $commandText = "select FilePath from Chapter_Lesson where ID=" . $lessonID;
-    
+    //$commandText = "select University.Image,University.Name,University.description from Course,University where University.ID=Course.UniveristyID and Course.CourseID=" . $courseID;
+    $commandText = "select University.Image,University.Name,University.description from Course join University on University.ID=Course.UniveristyID where Course.CourseID='".$courseID."'";
     // Try exectuting this query
     try {
         $result= mysqli_query($con, $commandText);
-       // createJsonArray($result);
-	   $row= mysqli_fetch_array($result);
-        echo $row[0];
+        //createJsonArray($result);
+       
+	  $row= mysqli_fetch_array($result);
+    	echo "[\"".$row[0]."\",";
+    	echo "\"".$row[1]."\",";
+    	echo "\"".$row[2]."\"]";
+    	
     }
     catch(Exception $e){ //Catch any unexpected exception
         echo 'Message: ' .$e->getMessage();
     }
 }
-    
+
 //Close database connection
 mysqli_close($con);
 
-/*
 function createJsonArray($res) {
      $i  = 0;
      $k = 0;
@@ -50,6 +54,5 @@ function createJsonArray($res) {
      echo json_encode($encode);
 
 }
-*/
 
 ?>
