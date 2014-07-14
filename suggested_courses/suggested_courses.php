@@ -1,11 +1,11 @@
 <?php
 function connect() {
-    //$con = mysqli_connect("localhost","root","","piwheel") OR DIE ("Error connect to DB");
+//    $con = mysqli_connect("localhost","root","","piwheel") OR DIE ("Error connect to DB");
     $con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","P@ssw0rd90906","PiWheel123") 
             or die("Error connect to DB");
     return $con;
 }
-
+//if(isset ($_POST['name'])){
 if(isset($_POST['name'])){
     $Sname = $_POST["name"];
     $commandText = "select * from user where Username like '" . $Sname . "'";
