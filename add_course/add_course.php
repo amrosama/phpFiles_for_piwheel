@@ -1,5 +1,4 @@
 <?php
-echo 'php start';
 
 addCourse();   
 
