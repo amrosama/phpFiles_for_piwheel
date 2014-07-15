@@ -778,19 +778,19 @@ insert into tags (tags_name) values ('mechanics');
 
 CREATE TABLE IF NOT EXISTS  courses_tags_link (
 	courses_tags_link_id int not null AUTO_INCREMENT primary key,
-	course_id varchar(255)  COLLATE utf8_bin not null,
+	course_id int(11)  not null,
 	tag_id int not null,
-	foreign key (course_id) references Course(CourseID) ON UPDATE CASCADE ,
+	foreign key (course_id) references Course(ID) ON UPDATE CASCADE ,
 	foreign key (tag_id) references tags(tags_id) ON UPDATE CASCADE 
 );
 
-insert into courses_tags_link (course_id,tag_id) values("527f5aaec1dec",1);
-insert into courses_tags_link (course_id,tag_id) values("527f5aaec1dec",2);
-insert into courses_tags_link (course_id,tag_id) values("52820ad086851",2);
-insert into courses_tags_link (course_id,tag_id) values("52820ad086851",3);
-insert into courses_tags_link (course_id,tag_id) values("528c78823a268",1);
-insert into courses_tags_link (course_id,tag_id) values("528c78823a268",5);
-insert into courses_tags_link (course_id,tag_id) values("528c795162b2e",7);
+insert into courses_tags_link (course_id,tag_id) values(14,1);
+insert into courses_tags_link (course_id,tag_id) values(14,2);
+insert into courses_tags_link (course_id,tag_id) values(15,2);
+insert into courses_tags_link (course_id,tag_id) values(16,3);
+insert into courses_tags_link (course_id,tag_id) values(17,1);
+insert into courses_tags_link (course_id,tag_id) values(18,5);
+insert into courses_tags_link (course_id,tag_id) values(20,7);
 
 -- Added By Heba Kamel
 
