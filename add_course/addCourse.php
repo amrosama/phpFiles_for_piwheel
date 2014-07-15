@@ -1,6 +1,6 @@
 
 <?php
-    include_once './add_chapter.php';
+    include_once './add_course.php';
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -46,8 +46,8 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="Tags">Tags</label>
-	           
+                    <label for="Tags">Tags :</label>
+	            <?php getTags();?>
                 </div>
                 
                 <button type="submit" class="btn btn-info">Add Course</button>
