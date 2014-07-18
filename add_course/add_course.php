@@ -12,10 +12,10 @@ $Name='static test';
 $Duration='20';
 $Level='2';
 $Image='pic.jpg';
-$courseID ='52b025f145252';
-//Open a new database connection
-$con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","P@ssw0rd90906","PiWheel123");
 
+//Open a new database connection
+//$con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","P@ssw0rd90906","PiWheel123");
+$con = mysqli_connect("localhost", "root", "", "piwheel") or die ("error on local DB");
 // Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -27,8 +27,8 @@ else{
     //$commandText = "INSERT INTO Course (Name, Tags, Duration, Level, Image)
     // VALUES ('" . $Name . "', '" . $Tags . "', '" . $Duration . "', " . $Level . ", '" . $Image . "')";
     
-    $commandText = "INSERT INTO Course (CourseID, Name,  Duration, Level, Image) 
-    VALUES ('" .$courseID ."', '" . $Name . "', '" . $Duration . "', " . $Level . ", '" . $Image . "')";
+    $commandText = "INSERT INTO Course (Name,  Duration, Level, Image) 
+    VALUES ('" . $Name . "', '" . $Duration . "', " . $Level . ", '" . $Image . "')";
     // Try exectuting this query
     try {
         mysqli_query($con, $commandText);
@@ -37,7 +37,7 @@ else{
     catch(Exception $e){ //Catch any unexpected exception
         echo 'Message: ' .$e->getMessage();
     }
-    $commandText = "SELECT * FROM Course ORDER BY id DESC LIMIT 1";
+    $commandText = "SELECT * FROM course ORDER BY id DESC LIMIT 1";
     try {
         $result= mysqli_query($con, $commandText);
         echo "<br/>";
