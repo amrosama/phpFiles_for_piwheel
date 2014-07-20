@@ -1,6 +1,7 @@
 <?php
 
 //Recieve JSON data
+<<<<<<< HEAD
 $Name = $_POST['Name'];
 //$Tags = $_POST['Tags'];
 $Duration = $_POST['Duration'];
@@ -19,6 +20,23 @@ $tag = explode(",", $_POST['Tags']);
 //Open a new database connection
 //$con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","P@ssw0rd90906","PiWheel123");
 $con = mysqli_connect("localhost","root","","piwheel");
+=======
+/*$Name = $_POST['Name'];
+$Tags = $_POST['Tags'];
+$Duration = $_POST['Duration'];
+$Level = $_POST['Level'];
+$Image = $_POST['Image'];
+*/
+//static values for test
+$Name='static test';
+$Duration='20';
+$Level='2';
+$Image='pic.jpg';
+$courseID ='52b025f145252';
+//Open a new database connection
+$con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","P@ssw0rd90906","PiWheel123");
+
+>>>>>>> b08489d1e9140cc262241be31f6887b524f36e42
 // Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -29,6 +47,7 @@ else{
     // Insert command text
     //$commandText = "INSERT INTO Course (Name, Tags, Duration, Level, Image)
     // VALUES ('" . $Name . "', '" . $Tags . "', '" . $Duration . "', " . $Level . ", '" . $Image . "')";
+<<<<<<< HEAD
     if(isset ($_FILES['Image'])){
         if ($_FILES["Image"]["error"] > 0)
         {
@@ -42,6 +61,11 @@ else{
     }
     $commandText = "INSERT INTO Course (CourseID, Name,  Duration, Level, Image) 
     VALUES ('" .$courseID ."', '" . $Name . "', '" . $Duration . "', " . $Level . ", '" . $_FILES["Image"]["name"] . "')";
+=======
+    
+    $commandText = "INSERT INTO Course (CourseID, Name,  Duration, Level, Image) 
+    VALUES ('" .$courseID ."', '" . $Name . "', '" . $Duration . "', " . $Level . ", '" . $Image . "')";
+>>>>>>> b08489d1e9140cc262241be31f6887b524f36e42
     // Try exectuting this query
     try {
         mysqli_query($con, $commandText);
@@ -57,10 +81,18 @@ else{
         while ($row = mysqli_fetch_array($result)) {
             $cID= $row[0];
         }
+<<<<<<< HEAD
         
         for($i =0;$i<count($tag);$i++){
             $commandText = "INSERT INTO courses_tags_link (course_id,  tag_id) 
                     VALUES (" . $cID . ", " . $tag[$i]  . ")";
+=======
+        $tags[0] = 1;
+        $tags[1] = 5;
+        for($i =0;$i<count($tags);$i++){
+            $commandText = "INSERT INTO courses_tags_link (course_id,  tag_id) 
+                    VALUES (" . $cID . ", " . $tags[$i]  . ")";
+>>>>>>> b08489d1e9140cc262241be31f6887b524f36e42
             echo "add Tags => " . $commandText;
             try {
                //mysqli_query($con, $commandText);
@@ -80,6 +112,7 @@ else{
     }
 }
 
+<<<<<<< HEAD
 function getRandomString($length = 8) 
 { $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
   $string = ''; 
@@ -88,6 +121,8 @@ function getRandomString($length = 8)
   return $string; 
 }
 
+=======
+>>>>>>> b08489d1e9140cc262241be31f6887b524f36e42
 //Close database connection
 mysqli_close($con);
 

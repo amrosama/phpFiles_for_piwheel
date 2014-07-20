@@ -708,9 +708,6 @@ CREATE TABLE IF NOT EXISTS `User` (
   `tmp_email` varchar(255) COLLATE utf8_bin NOT NULL,
   `CurrentPosition` varchar(255) COLLATE utf8_bin NOT NULL,
   `Bio` varchar(255) COLLATE utf8_bin NOT NULL,
-  `certification` varchar(255) COLLATE utf8_bin NOT NULL,
-  `accreditedby` varchar(255) COLLATE utf8_bin NOT NULL,
-  `verificationLink` varchar(255) COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `Username` (`Username`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=20 ;
@@ -810,8 +807,9 @@ CREATE TABLE IF NOT EXISTS  rating (
 
 CREATE TABLE IF NOT EXISTS  certification (
 	ID int not null AUTO_INCREMENT primary key,
-	userID varchar(255)  COLLATE utf8_bin not null,
-        certName varchar(255)  COLLATE utf8_bin not null,
-        acreditedby varchar(255)  COLLATE utf8_bin not null,
-        verificationLink  varchar(255)  COLLATE utf8_bin 
+	userID varchar(255) COLLATE utf8_bin NOT NULL,
+        certName varchar(255)  COLLATE utf8_bin ,
+        acreditedby varchar(255)  COLLATE utf8_bin ,
+        verificationLink  varchar(255)  COLLATE utf8_bin not null
+--        foreign key (userID) references `User`(`ID`) ON UPDATE CASCADE
 );
