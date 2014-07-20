@@ -1,7 +1,4 @@
 
-<?php
-    include_once './add_course.php';
-?>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -46,10 +43,10 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="Tags">Tags :</label>
-	            <?php getTags();?>
-                </div>
-                
+                    <label for="image">Tags</label>
+                    <input type="text" class="form-control" id="C_Tags" name="Tags" placeholder="Tags" required=""/>
+		</div>
+              
                 <button type="submit" class="btn btn-info">Add Course</button>
             </form>
         </div>

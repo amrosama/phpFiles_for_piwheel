@@ -1,29 +1,34 @@
 <?php
 
-addCourse();   
-
-function connect() {
-    //$con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","P@ssw0rd90906","PiWheel123") or die ("error on DB");
-    $con = mysqli_connect("localhost", "root", "", "piwheel") or die ("error on local DB");
-    return $con;
+//Recieve JSON data
+$Name = $_POST['Name'];
+//$Tags = $_POST['Tags'];
+$Duration = $_POST['Duration'];
+$Level = $_POST['Level'];
+//$Image = $_POST['Image'];
+$courseID =  getRandomString();
+//static values for test
+//$Name='static test';
+//$Duration='20';
+//$Level='2';
+//$Image='pic.jpg';
+//$courseID ='52b025f145252';
+//$tags[0] = 1;
+//$tags[1] = 5;
+$tag = explode(",", $_POST['Tags']);
+//Open a new database connection
+//$con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","P@ssw0rd90906","PiWheel123");
+$con = mysqli_connect("localhost","root","","piwheel");
+// Check connection
+if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-function getTags() {
-    $commandText = "select * from tags";
-    try {
-        $result= mysqli_query(connect(), $commandText);
-        echo "<br/>";
-        while ($row = mysqli_fetch_array($result))
-        {
-            echo "<input type='checkbox' name='Tags[]' value='$row[0]' />    $row[1]<br />";
-        }
-    }
-    catch(Exception $e){ //Catch any unexpected exception
-        echo 'Message: ' .$e->getMessage();
-    }
-}
-
-function addCourse() {
+// Connection is done with no errors
+else{
+    // Insert command text
+    //$commandText = "INSERT INTO Course (Name, Tags, Duration, Level, Image)
+    // VALUES ('" . $Name . "', '" . $Tags . "', '" . $Duration . "', " . $Level . ", '" . $Image . "')";
     if(isset ($_FILES['Image'])){
         if ($_FILES["Image"]["error"] > 0)
         {
@@ -35,63 +40,55 @@ function addCourse() {
                               "images/" . $_FILES["Image"]["name"]);
         }
     }
-    if(isset( $_POST['Name']) && isset( $_POST['Duration']) && isset( $_POST['Level'])){
-        $con = connect();
-        $commandText = "INSERT INTO Course (Name,  Duration, Level, Image) 
-                        VALUES ('" . $_POST['Name'] . "', '" . $_POST['Duration'] . "', " . $_POST['Level'] . ", '" . $_FILES["Image"]["name"] . "')";
-        try {
-           //mysqli_query($con, $commandText);
-            if(mysqli_query($con, $commandText)){
-                 echo "course inserted"; 
-               }else{
-                   echo "sorry, course not inserted";
-               }
-        }
-        catch(Exception $e){ //Catch any unexpected exception
-            echo 'Message: ' .$e->getMessage();
-        }
-    }
-    addTags();
-}
-
-function addTags() {
-    if(!empty($_POST['Tags'])) {
-        foreach($_POST['Tags'] as $check) {
-                echo $check;
-                //add checked tag to courses_tags_link
-                $commandText = "INSERT INTO courses_tags_link (course_id,  tag_id) 
-                        VALUES (" . getCourseID() . ", " . $check  . ")";
-                echo "add Tags => " . $commandText;
-                try {
-                   //mysqli_query($con, $commandText);
-                    if(mysqli_query(connect(), $commandText)){
-                         echo "tags inserted"; 
-                       }else{
-                           echo "sorry, tags not inserted";
-                       }
-                }
-                catch(Exception $e){ //Catch any unexpected exception
-                    echo 'Message: ' .$e->getMessage();
-                }
-        }
-    }
-}
-
-
-function getCourseID() {
-    $commandText = "SELECT * FROM course ORDER BY id DESC LIMIT 1";
+    $commandText = "INSERT INTO Course (CourseID, Name,  Duration, Level, Image) 
+    VALUES ('" .$courseID ."', '" . $Name . "', '" . $Duration . "', " . $Level . ", '" . $_FILES["Image"]["name"] . "')";
+    // Try exectuting this query
     try {
-        $result= mysqli_query(connect(), $commandText);
-        echo "<br/>";
-        while ($row = mysqli_fetch_array($result))
-        {
-            return $row[0];
-        }
+        mysqli_query($con, $commandText);
+        echo mysqli_insert_id($con);
     }
     catch(Exception $e){ //Catch any unexpected exception
         echo 'Message: ' .$e->getMessage();
     }
+    $commandText = "SELECT * FROM Course ORDER BY id DESC LIMIT 1";
+    try {
+        $result= mysqli_query($con, $commandText);
+        echo "<br/>";
+        while ($row = mysqli_fetch_array($result)) {
+            $cID= $row[0];
+        }
+        
+        for($i =0;$i<count($tag);$i++){
+            $commandText = "INSERT INTO courses_tags_link (course_id,  tag_id) 
+                    VALUES (" . $cID . ", " . $tag[$i]  . ")";
+            echo "add Tags => " . $commandText;
+            try {
+               //mysqli_query($con, $commandText);
+                if(mysqli_query($con, $commandText)){
+                     echo "tags inserted"; 
+                   }else{ 
+                       echo "sorry, tags not inserted";
+                   }
+            }
+            catch(Exception $e){ //Catch any unexpected exception
+                echo 'Message: ' .$e->getMessage();
+            }
+        }
+    }
+    catch(Exception $e){ //Catch any unexpected exception
+            echo 'Message: ' .$e->getMessage();
+    }
 }
+
+function getRandomString($length = 8) 
+{ $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'; 
+  $string = ''; 
+  for ($i = 0; $i < $length; $i++) 
+  { $string .= $characters[mt_rand(0, strlen($characters) - 1)]; }
+  return $string; 
+}
+
 //Close database connection
-//mysqli_close($con);
+mysqli_close($con);
+
 ?>
