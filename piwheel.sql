@@ -24,8 +24,8 @@ SET time_zone = "+00:00";
 
 --
 -- Table structure for table `activationTokens`
---
-
+--     
+   
 CREATE TABLE IF NOT EXISTS `activationTokens` (
   `UserID` varchar(255) COLLATE utf8_bin NOT NULL,
   `Token` varchar(255) COLLATE utf8_bin NOT NULL,
