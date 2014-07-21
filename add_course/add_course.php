@@ -17,8 +17,8 @@ $courseID =  getRandomString();
 //$tags[1] = 5;
 $tag = explode(",", $_POST['Tags']);
 //Open a new database connection
-//$con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","P@ssw0rd90906","PiWheel123");
-$con = mysqli_connect("localhost","root","","piwheel");
+$con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","P@ssw0rd90906","PiWheel123");
+//$con = mysqli_connect("localhost","root","","piwheel");
 // Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
