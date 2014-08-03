@@ -1,0 +1,24 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+        <script type="text/javascript" src="uploadFile.js" ></script>
+    </head>
+    <body>
+        <div>
+            <form action="uploadFile.php" method="post" enctype="multipart/form-data">
+                <input type="text" name="Path" id="Path"/>
+                <input type="file" id="File" name="File"  required=""/>
+                <input type="submit" value="GO" id="Upload"/>
+            </form>
+            
+        </div>
+    </body>
+</html>
