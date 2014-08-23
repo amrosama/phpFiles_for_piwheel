@@ -9,7 +9,7 @@ $con = mysqli_connect("PiWheel123.db.10962756.hostedresource.com","PiWheel123","
 if (mysqli_connect_errno()) {
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 } else {
-	$query = "SELECT Name,Image,Rating FROM course WHERE UniveristyID = {$UnivId}";
+	$query = "SELECT Name,Image,Rating FROM Course WHERE UniveristyID = {$UnivId} and publish= '1' ";
 	try {
 		$result = mysqli_query($con, $query);
 		$i=0;
