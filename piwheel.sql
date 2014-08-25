@@ -736,7 +736,7 @@ INSERT INTO `User` (`ID`, `UserID`, `Username`, `Password`, `Pass_Salt`, `IsActi
 -- edit by Heba Kamel
 --
 CREATE TABLE IF NOT EXISTS  User_Courses (
-user_id varchar(25) COLLATE utf8_bin NOT NULL,  
+user_id varchar(255) COLLATE utf8_bin NOT NULL,  
 course_id varchar(255) COLLATE utf8_bin NOT NULL,  
 purchase boolean default 0,
 complete boolean default 0,
@@ -812,4 +812,20 @@ CREATE TABLE IF NOT EXISTS  certification (
         acreditedby varchar(255)  COLLATE utf8_bin ,
         verificationLink  varchar(255)  COLLATE utf8_bin not null
 --        foreign key (userID) references `User`(`ID`) ON UPDATE CASCADE
+);
+-------------------------------
+--25/8 added by Heba Kamel
+CREATE TABLE IF NOT EXISTS  student_exams (
+	studentExamID int not null AUTO_INCREMENT primary key,
+	userID varchar(255) COLLATE utf8_bin NOT NULL,
+        ExamID varchar(255)  COLLATE utf8_bin 
+);
+
+CREATE TABLE IF NOT EXISTS  student_exams_correction (
+        ID int not null AUTO_INCREMENT primary key,
+	studentExamID int not null ,
+	Qnumber int NOT NULL,
+        grade int NOT NULL ,
+        comment varchar(255)  COLLATE utf8_bin,
+        foreign key (studentExamID) references `student_exams`(`studentExamID`) ON UPDATE CASCADE
 );
