@@ -1,0 +1,47 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <link href="bootstrap-theme.min.css" rel="stylesheet">
+        <style>
+            body{
+                background-color: #eee;
+            }
+            h3{
+                color: white;
+            }
+        </style>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top" ><h3>Correct Exam</h3></div>
+        <div class="col-sm-6 col-sm-offset-3" style="width:500px;margin: 0 auto;margin-top: 100px;">
+            <form id="myform" enctype="multipart/form-data" method="post" action="correct_exam.php" >
+                
+		<div id="name" class="form-group">
+			<label for="name">Exam ID</label>
+			<input type="text" class="form-control" name="examId" placeholder="Exam ID" required=""/>
+		</div>
+
+		<div id="descr" class="form-group">
+			<label for="description">User ID</label>
+			<input type="text" class="form-control" name="userId" placeholder="User ID" required=""/>
+		</div>
+
+		<div id="image" class="form-group">
+			<label for="image">Array of Correction</label>
+                        <input type="text" class="form-control" name="correction"  required=""/>
+			
+		</div>
+                <button type="submit" class="btn btn-info">Correct Exam</button>
+                </form>
+        </div>        
+        <div id="res"></div>      
+    </body>
+</html>
