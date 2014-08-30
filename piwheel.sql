@@ -736,8 +736,8 @@ INSERT INTO `User` (`ID`, `UserID`, `Username`, `Password`, `Pass_Salt`, `IsActi
 -- edit by Heba Kamel
 --
 CREATE TABLE IF NOT EXISTS  User_Courses (
-user_id varchar(255) COLLATE utf8_bin NOT NULL,  
-course_id varchar(255) COLLATE utf8_bin NOT NULL,  
+user_id varchar(100) COLLATE utf8_bin NOT NULL,  
+course_id varchar(100) COLLATE utf8_bin NOT NULL,  
 purchase boolean default 0,
 complete boolean default 0,
 PRIMARY KEY (user_id,course_id));
