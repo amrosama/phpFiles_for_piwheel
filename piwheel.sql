@@ -813,19 +813,18 @@ CREATE TABLE IF NOT EXISTS  certification (
         verificationLink  varchar(255)  COLLATE utf8_bin not null
 --        foreign key (userID) references `User`(`ID`) ON UPDATE CASCADE
 );
--------------------------------
---25/8 added by Heba Kamel
-CREATE TABLE IF NOT EXISTS  student_exams (
+
+CREATE TABLE IF NOT EXISTS student_exams (
 	studentExamID int not null AUTO_INCREMENT primary key,
-	userID varchar(255) COLLATE utf8_bin NOT NULL,
-        ExamID varchar(255)  COLLATE utf8_bin 
+	userID varchar(255) COLLATE utf8_bin ,
+	ExamID varchar(255)  COLLATE utf8_bin 
 );
 
 CREATE TABLE IF NOT EXISTS  student_exams_correction (
-        ID int not null AUTO_INCREMENT primary key,
+	ID int not null AUTO_INCREMENT primary key,
 	studentExamID int not null ,
 	Qnumber int NOT NULL,
-        grade int NOT NULL ,
-        comment varchar(255)  COLLATE utf8_bin,
-        foreign key (studentExamID) references `student_exams`(`studentExamID`) ON UPDATE CASCADE
+	grade int NOT NULL ,
+	comment varchar(255)  COLLATE utf8_bin,
+	foreign key (studentExamID) references `student_exams`(`studentExamID`) ON UPDATE CASCADE
 );
