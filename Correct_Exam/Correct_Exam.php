@@ -9,7 +9,7 @@ function connect() {
 }
     // insert in  table (student_exams)
     $command = "insert into student_exams(userID, ExamID) values('" . $_POST["userId"] ."','" . $_POST["examId"] . "')";
-    echo $command . "<br>";
+    //echo $command . "<br>";
     if(mysqli_query(connect(), $command)){
        //insert correction in table (student_exams_correction)
         $arr = str_replace('[', '', $_POST['correction']);
@@ -18,22 +18,31 @@ function connect() {
         $j =0;
         $x =$j+2;
          for($i =0; $i<count($correctionIndex)/3; $i++){
+             //echo str_replace('[', '', $correctionIndex[$x]) . "<br>";
+             $test = str_replace('[', '', $correctionIndex[$x]);
+             $test = str_replace('\\', '', $test);
+             //echo "test-->" . $test . "<br>";
              $command = "insert into student_exams_correction (studentExamID, Qnumber, grade, comment)" .
                         "values(" . getStudentExamID() . "," . $correctionIndex[$x-2] . "," 
-                                . $correctionIndex[$x-1]. "," . str_replace('[', '', $correctionIndex[$x]) . ")";
+                                . $correctionIndex[$x-1]. "," . $test . ")";
              if(mysqli_query(connect(), $command)){
                  $inserted = 1;
              }else{
                  $inserted = 0;
              }
-//             echo $command;
+             //echo $command . "<br>";
              $x = $x + 3;
          }
          if($inserted == 1){
-             echo "inserted";
+             echo "1";
+             return 1;
+         }else{
+             echo "0";
+             return 0;
          }
     }else{
-        echo "sorry, not inserted";
+        echo "0";
+        return 0;
     }
 mysqli_close(connect());
 
